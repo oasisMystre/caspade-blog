@@ -1,0 +1,40 @@
+@import "@unocss/reset/tailwind.css";
+@unocss all;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.btn {
+  @apply flex items-center space-x-2 px-4 py-3;
+}
+
+.btn-primary {
+  @apply rounded-lg bg-yellow-500 text-white;
+}
+
+.btn-secondary {
+  @apply rounded-lg bg-stone-700/50 text-white;
+}
+
+.scroll-none {
+  scrollbar-width: 0;
+}
+
+.scroll-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
