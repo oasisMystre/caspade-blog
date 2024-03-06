@@ -1,4 +1,3 @@
-import { MdEmail } from "react-icons/md";
 import SubscribeForm from "./SubscribeForm";
 
 export default function HomeSubscribeBanner() {

@@ -8,7 +8,7 @@ type StoryFilterProps = {
 
 export default function StoryFilter({ value, onSelect }: StoryFilterProps) {
   return (
-    <div className="flex space-x-2 overflow-x-scroll md:space-x-4 scroll-none">
+    <div className="flex space-x-2 overflow-x-scroll md:space-x-4 max-w-xs">
       {feedFilterCategories.map((category, index) => {
         const selected =
           value === category || (value === null && category.href === null);

@@ -12,7 +12,7 @@ export default function _Provider({ children }: React.PropsWithChildren) {
       accessToken={process.env.NEXT_PUBLIC_STORY_BLOC_API_KEY}
       use={[apiPlugin]}
     >
-      <Provider store={store}> {children} </Provider>;
+      <Provider store={store}> {children} </Provider>
     </StoryBlokProvider>
   );
 }

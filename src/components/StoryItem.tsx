@@ -43,7 +43,7 @@ export default function StoryItem({
           <div className="flex flex-1 items-end">
             <Image
               className={clsx("w-full rounded-xl object-cover", [
-                hideDescription ? "w-sm h-64" : "h-sm",
+                hideDescription ? "w-sm h-64" : "h-sm lt-md:h-56",
               ])}
               src={content.illustration.filename}
               alt={content.illustration.alt}

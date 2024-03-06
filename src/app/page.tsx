@@ -56,7 +56,7 @@ export default function HomePage() {
             value={category}
             onSelect={(value) => setCategory(value)}
           />
-          <div className="flex flex-col space-y-8">
+          <div className="flex flex-col space-y-16">
             {feeds.map((feed) => (
               <StoryItem
                 key={feed.id}

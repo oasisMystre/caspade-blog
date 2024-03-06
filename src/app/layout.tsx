@@ -7,8 +7,6 @@ import "./global.css";
 import Provider from "@/components/Provider";
 import LayoutHeader from "@/components/LayoutHeader";
 import LayoutFooter from "@/components/LayoutFooter";
-import StoryBlokProvider from "@/providers/StoryBlokProvider";
-import { apiPlugin } from "@storyblok/react";
 
 const poppins = LocalFont({
   src: [

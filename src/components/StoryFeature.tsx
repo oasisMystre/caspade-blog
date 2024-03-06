@@ -21,12 +21,12 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
       <div className="flex space-x-8 lg:space-x-64">
         <div className="flex flex-1 flex-col space-y-8">
           <div className="flex">
-            <h1 className="flex-1 text-4xl font-medium first-letter:capitalize 2xl:text-6xl">
+            <h1 className="flex-1 text-3xl md:text-4xl font-medium first-letter:capitalize 2xl:text-6xl">
               {content.title}
             </h1>
             <div className="md:hidden">
               <Image
-                className="h-12 w-12 rounded-full"
+                className="h-8 w-8 rounded-full"
                 src={content.user.avatar.filename}
                 alt={content.user.name}
                 width={32}

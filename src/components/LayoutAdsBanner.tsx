@@ -7,7 +7,7 @@ export default function LayoutAdsBanner() {
         <h1 className="text-4xl font-medium lg:text-5xl xl:text-6xl">
           Start building with Capsade
         </h1>
-        <p className="text-lg 2xl:text-2xl">
+        <p className="md:text-lg 2xl:text-2xl">
           Caspade is your trusted source for the latest updates, trends, and
           insights in Blockchain technology and cryptocurrencies, with a focus
           on Africa.
