@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import { feedFeature } from "@/assets";
-
 import { Category } from "@/data/categories";
 import StoryItem from "@/components/StoryItem";
 import StoryFilter from "@/components/StoryFilter";

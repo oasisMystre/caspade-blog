@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ISbNode, ISbStoryData } from "@storyblok/react";
+import { ISbStoryData } from "@storyblok/react";
 
 import { LoadingState } from "../models";
-import { StoryContent, StoryParams } from "../models/story.model";
+import { StoryParams } from "../models/story.model";
+import Cache from "@/lib/cache";
 
 export const getFeature = createAsyncThunk(
   "feature/getFeature",
@@ -17,6 +18,7 @@ export const getFeature = createAsyncThunk(
       });
 
       story.content = content;
+      story.content.user = await Cache.instance.getUser(content.author);
 
       return story;
     }),
@@ -43,6 +45,5 @@ export const featureSlice = createSlice({
       });
   },
 });
-
 
 export const featureReducer = featureSlice.reducer;

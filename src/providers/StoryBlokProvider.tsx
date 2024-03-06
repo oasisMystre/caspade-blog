@@ -23,7 +23,7 @@ export default function StoryBlokProvider({
   useEffect(() => {
     storyblokInit(props);
     setApi(getStoryblokApi());
-  }, [props]);
+  }, []);
 
   return (
     <StoryBlokContext.Provider

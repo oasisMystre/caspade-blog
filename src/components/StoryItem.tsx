@@ -39,7 +39,7 @@ export default function StoryItem({
           <StoryAction />
         </div>
         <div className="flex max-w-sm flex-col space-y-4">
-          {!hideDescription && <StoryUser author={content.author} />}
+          {!hideDescription && <StoryUser user={content.user} />}
           <div className="flex flex-1 items-end">
             <Image
               className={clsx("w-full rounded-xl object-cover", [

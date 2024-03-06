@@ -3,7 +3,6 @@ import { ISbStoryData } from "@storyblok/react";
 
 import StoryAction from "./StoryAction";
 import StoryHeader from "./StoryHeader";
-import useUser from "@/composables/useUser";
 import { StoryContent } from "@/store/models/story.model";
 
 type StoryFeatureProps = {
@@ -12,7 +11,6 @@ type StoryFeatureProps = {
 
 export default function StoryFeature({ story }: StoryFeatureProps) {
   const content = story.content as StoryContent;
-  const user = useUser(content.author);
 
   return (
     <section className="flex flex-col space-y-8 rounded-xl bg-stone-700/20 p-8 2xl:px-16">
@@ -27,15 +25,13 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
               {content.title}
             </h1>
             <div className="md:hidden">
-              {user && (
-                <Image
-                  className="h-12 w-12 rounded-full"
-                  src={user.avatar.filename}
-                  alt={user.name}
-                  width={32}
-                  height={32}
-                />
-              )}
+              <Image
+                className="h-12 w-12 rounded-full"
+                src={content.user.avatar.filename}
+                alt={content.user.name}
+                width={32}
+                height={32}
+              />
             </div>
           </div>
           <p className="text-white/80 md:text-base 2xl:text-2xl">
@@ -44,15 +40,13 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
           <StoryAction />
         </div>
         <div className="hidden md:block">
-          {user && (
-            <Image
-              className="h-12 w-12 rounded-full md:h-16 md:w-16"
-              src={user.avatar.filename}
-              alt={user.name}
-              width={32}
-              height={32}
-            />
-          )}
+          <Image
+            className="h-12 w-12 rounded-full md:h-16 md:w-16"
+            src={content.user.avatar.filename}
+            alt={content.user.name}
+            width={32}
+            height={32}
+          />
         </div>
       </div>
     </section>

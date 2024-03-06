@@ -1,9 +1,6 @@
-import {
-  ISbRichtext,
-  ISbSchema,
-  ISbStoriesParams,
-} from "@storyblok/react";
+import { ISbRichtext, ISbSchema, ISbStoriesParams } from "@storyblok/react";
 import { StoryBlokContextValue } from "@/providers/StoryBlokProvider";
+import { User } from "./user.model";
 
 export type StoryParams = {
   api: StoryBlokContextValue["api"];
@@ -27,9 +24,9 @@ export type StoryAsset = {
 
 export type StoryContent = {
   title: string;
-  author: string,
+  author: string;
   description: string;
   content: ISbRichtext;
   illustration: StoryAsset;
   socials: ISbSchema[];
-};
+} & { user: User };

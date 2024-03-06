@@ -1,4 +1,4 @@
-import { ISbStoryData } from "@storyblok/react";
+import { ISbStory, ISbStoryData } from "@storyblok/react";
 
 import {
   createAsyncThunk,
@@ -9,14 +9,25 @@ import {
 import { LoadingState } from "../models";
 import { StoryParams } from "../models/story.model";
 import { toNonNull } from "@/lib/object";
+import Cache from "@/lib/cache";
 
-export const fetchStories = ({ api, params }: StoryParams) =>
-  api.getAll(
+export const fetchStories = async ({ api, params }: StoryParams) => {
+  const stories = (await api.getAll(
     "cdn/stories",
     Object.assign(toNonNull(params), {
       by_slugs: "posts/*",
     }),
-  ) as unknown as Promise<ISbStoryData[]>;
+  )) as unknown as ISbStoryData[];
+
+  return Promise.all(
+    stories.map(async (story) => {
+      story.content.user = await Cache.instance.getUser(story.content.author);
+      console.log(story);
+
+      return story;
+    }),
+  );
+};
 
 export const getStories = createAsyncThunk("feed/getStories", fetchStories);
 
