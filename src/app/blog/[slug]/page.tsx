@@ -1,6 +1,7 @@
+import { Metadata, ResolvingMetadata } from "next";
 import { MdArrowUpward } from "react-icons/md";
 
-import { PageProps } from "@/pages/types";
+import { PageProps } from "@/wrapper/types";
 import Storyblok from "@/lib/storybloc";
 
 import RichText from "@/components/RichText";
@@ -9,7 +10,6 @@ import StoryHeader from "@/components/StoryHeader";
 import LayoutBackNavigation from "@/components/LayoutBackNavigation";
 import BlogSubscribeBanner from "@/components/BlogSubscribeBanner";
 import StoryRecommendation from "@/components/StoryRecommedation";
-import { Metadata, ResolvingMetadata } from "next";
 
 export async function generateMetadata(
   { params }: PageProps,

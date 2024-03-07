@@ -1,6 +1,6 @@
 import Storyblok from "@/lib/storybloc";
-import HomePage from "@/pages/HomePage";
-import { PageProps } from "@/pages/types";
+import HomePage from "@/wrapper/HomePage";
+import { PageProps } from "@/wrapper/types";
 
 export default async function Home({ searchParams }: PageProps) {
   const category = searchParams.category as string | undefined;
