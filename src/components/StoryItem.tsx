@@ -29,24 +29,24 @@ export default function StoryItem({
       />
       <Link
         href={`/blog/${story.uuid}/`}
-        className="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0"
+        className="flex flex-col-reverse md:space-y-4 md:flex-row md:space-x-8 md:space-y-0"
       >
-        <div className="flex flex-1 flex-col space-y-8">
+        <div className="flex flex-1 flex-col space-y-2 md:space-y-8">
           <h1 className={"text-2xl font-medium md:text-4xl 2xl:text-5xl"}>
             {content.title}
           </h1>
           {!hideDescription && (
-            <p className="text-white/90 xl:text-lg 2xl:text-xl">
+            <p className="text-white/90 xl:text-lg 2xl:text-xl line-clamp-7">
               {content.description}
             </p>
           )}
           <StoryAction />
         </div>
-        <div className="flex max-w-sm flex-col space-y-4">
+        <div className="flex max-w-sm flex-col space-y-4 lt-md:pb-8">
           {!hideDescription && <StoryUser user={content.user} />}
           <div className="flex flex-1 items-end">
             <Image
-              className={clsx("w-full rounded-xl object-cover", [
+              className={clsx("w-full rounded-md object-cover", [
                 hideDescription ? "w-sm h-64" : "h-sm lt-md:h-56",
               ])}
               src={content.illustration.filename}

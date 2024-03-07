@@ -1,34 +1,44 @@
-"use client";
-import { useParams } from "next/navigation";
-
-import { useEffect, useState } from "react";
 import { MdArrowUpward } from "react-icons/md";
-import { ISbStoryData } from "@storyblok/react";
 
-import useStoryBlok from "@/composables/useStoryBlok";
+import { PageProps } from "@/pages/types";
+import Storyblok from "@/lib/storybloc";
 
-import { fetchStory } from "@/store/slices/feature";
-import { StoryContent } from "@/store/models/story.model";
-
+import RichText from "@/components/RichText";
 import StoryUser from "@/components/StoryUser";
 import StoryHeader from "@/components/StoryHeader";
 import LayoutBackNavigation from "@/components/LayoutBackNavigation";
 import BlogSubscribeBanner from "@/components/BlogSubscribeBanner";
 import StoryRecommendation from "@/components/StoryRecommedation";
-import RichText from "@/components/RichText";
+import { Metadata, ResolvingMetadata } from "next";
 
-function useStory(uuid: string) {
-  const { api } = useStoryBlok();
-  const [story, setStory] = useState<ISbStoryData | null>(null);
-  useEffect(() => {
-    fetchStory(api, uuid, { find_by: "uuid" }).then(setStory);
-  }, [uuid]);
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { content, ...story } = await Storyblok.instance.fetchPost(
+    params.slug,
+    { find_by: "uuid" },
+  );
 
-  return story;
+  return {
+    title: content.title,
+    description: content.description,
+    creator: content.user.name,
+    category: story.tag_list.join(","),
+    openGraph: {
+      images: [
+        content.illustration.filename,
+        ...((await parent).openGraph?.images || []),
+      ],
+    },
+  };
 }
 
-function BlogDetail({ story }: { story: ISbStoryData }) {
-  const content = story.content as StoryContent;
+export default async function BlogDetailPage({ params }: PageProps) {
+  const { content, ...story } = await Storyblok.instance.fetchPost(
+    params.slug,
+    { find_by: "uuid" },
+  );
 
   return (
     <div className="flex flex-col space-y-32 ">
@@ -57,7 +67,7 @@ function BlogDetail({ story }: { story: ISbStoryData }) {
             </div>
           </div>
           <div className="flex flex-col space-y-32">
-            <div className="flex flex-col text-base prose prose-white xl:text-xl">
+            <div className="prose prose-white flex flex-col text-base xl:text-xl">
               <RichText document={content.content} />
             </div>
             <BlogSubscribeBanner />
@@ -70,11 +80,4 @@ function BlogDetail({ story }: { story: ISbStoryData }) {
       />
     </div>
   );
-}
-
-export default function BlogDetailPage() {
-  const params = useParams();
-  const story = useStory(params.uuid as string);
-
-  return story && <BlogDetail story={story} />;
 }

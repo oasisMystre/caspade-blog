@@ -13,7 +13,7 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
   const content = story.content as StoryContent;
 
   return (
-    <section className="flex flex-col space-y-8 rounded-xl bg-stone-700/20 p-8 2xl:px-16">
+    <section className="flex flex-col space-y-8 rounded-xl bg-stone-700/20 p-4 md:p-8 2xl:px-16">
       <StoryHeader
         createdAt={story.created_at}
         categories={story.tag_list}

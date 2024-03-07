@@ -1,5 +1,6 @@
+"use client";
 import { useRouter } from "next/navigation";
-import { MdArrowBack, MdChevronRight } from "react-icons/md";
+import { MdChevronRight } from "react-icons/md";
 
 type LayoutBackNavigationProps = {
   title: string;
@@ -19,7 +20,7 @@ export default function LayoutBackNavigation({
         Back
       </button>
       <MdChevronRight />
-      <span className="text-yellow-500">Growth</span>
+      <span className="text-yellow-500">{title}</span>
     </div>
   );
 }
