@@ -1,4 +1,4 @@
-import { ISbStory, ISbStoryData } from "@storyblok/react";
+import { ISbStoryData } from "@storyblok/react";
 
 import {
   createAsyncThunk,
@@ -6,10 +6,12 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 
+import Cache from "@/lib/cache";
+import { toNonNull } from "@/lib/object";
+
 import { LoadingState } from "../models";
 import { StoryParams } from "../models/story.model";
-import { toNonNull } from "@/lib/object";
-import Cache from "@/lib/cache";
+
 
 export const fetchStories = async ({ api, params }: StoryParams) => {
   const stories = (await api.getAll(
@@ -22,7 +24,6 @@ export const fetchStories = async ({ api, params }: StoryParams) => {
   return Promise.all(
     stories.map(async (story) => {
       story.content.user = await Cache.instance.getUser(story.content.author);
-      console.log(story);
 
       return story;
     }),

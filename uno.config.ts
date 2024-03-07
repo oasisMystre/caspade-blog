@@ -3,6 +3,7 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
+   presetTypography,
 } from 'unocss'
 
 export default defineConfig({
@@ -10,6 +11,7 @@ export default defineConfig({
     presetUno({
       dark: 'media',
     }),
+    presetTypography(),
     presetAttributify(),
     presetIcons({
       extraProperties: {

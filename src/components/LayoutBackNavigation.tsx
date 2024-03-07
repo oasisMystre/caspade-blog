@@ -1,17 +1,25 @@
 import { useRouter } from "next/navigation";
-import { MdArrowBack, MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { MdArrowBack, MdChevronRight } from "react-icons/md";
 
-export default function LayoutBackNavigation() {
+type LayoutBackNavigationProps = {
+  title: string;
+};
+
+export default function LayoutBackNavigation({
+  title,
+}: LayoutBackNavigationProps) {
   const router = useRouter();
 
   return (
-    <div className="flex items-center space-x-2">
-      <button className="hidden">
-        <MdArrowBack className="text-xl" />
+    <div className="flex items-center space-x-2 text-sm">
+      <button
+        className="py-2 text-white/80"
+        onClick={() => router.back()}
+      >
+        Back
       </button>
-      <button className="py-2" onClick={() => router.back()}>Back</button>
       <MdChevronRight />
-      <span>Growth</span>
+      <span className="text-yellow-500">Growth</span>
     </div>
   );
 }

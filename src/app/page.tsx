@@ -1,12 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-
 import { Category } from "@/data/categories";
-import StoryItem from "@/components/StoryItem";
-import StoryFilter from "@/components/StoryFilter";
-import StoryFeature from "@/components/StoryFeature";
-import ListPagination from "@/components/ListPagination";
-import HomeSubscribeBanner from "@/components/HomeSubscribeBanner";
+
+import { getFeature } from "@/store/slices/feature";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   feedActions,
@@ -14,8 +10,14 @@ import {
   fetchStories,
   getStories,
 } from "@/store/slices/feed";
+
+import StoryItem from "@/components/StoryItem";
+import StoryFilter from "@/components/StoryFilter";
+import StoryFeature from "@/components/StoryFeature";
+import ListPagination from "@/components/ListPagination";
+import HomeSubscribeBanner from "@/components/HomeSubscribeBanner";
+
 import useStoryBlok from "@/composables/useStoryBlok";
-import { getFeature } from "@/store/slices/feature";
 
 export default function HomePage() {
   const { api } = useStoryBlok();

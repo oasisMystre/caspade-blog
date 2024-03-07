@@ -1,4 +1,4 @@
-import { ISbStory, getStoryblokApi } from "@storyblok/react";
+import { getStoryblokApi } from "@storyblok/react";
 import { StoryBlokContextValue } from "@/providers/StoryBlokProvider";
 import { User } from "@/store/models/user.model";
 

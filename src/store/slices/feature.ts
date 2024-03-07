@@ -5,6 +5,15 @@ import { LoadingState } from "../models";
 import { StoryParams } from "../models/story.model";
 import Cache from "@/lib/cache";
 
+export const fetchStory = (
+  api: StoryParams["api"],
+  ...params: Parameters<StoryParams["api"]["getStory"]>
+) =>
+  api.getStory(...params).then(async ({ data: { story } }) => {
+    story.content.user = await Cache.instance.getUser(story.content.author);
+    return story;
+  });
+
 export const getFeature = createAsyncThunk(
   "feature/getFeature",
   (api: StoryParams["api"]) =>

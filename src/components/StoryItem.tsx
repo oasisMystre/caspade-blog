@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 import Image from "next/image";
 
 import StoryHeader from "./StoryHeader";
@@ -26,7 +27,10 @@ export default function StoryItem({
         createdAt={story.created_at}
         categories={story.tag_list}
       />
-      <div className="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0">
+      <Link
+        href={`/blog/${story.uuid}/`}
+        className="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0"
+      >
         <div className="flex flex-1 flex-col space-y-8">
           <h1 className={"text-2xl font-medium md:text-4xl 2xl:text-5xl"}>
             {content.title}
@@ -52,7 +56,7 @@ export default function StoryItem({
             />
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

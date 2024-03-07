@@ -7,7 +7,6 @@ type StoryUserProps = {
 };
 
 export default function StoryUser({ user }: StoryUserProps) {
-  console.log(user)
   return (
     <div className="flex space-x-4">
       <Image
