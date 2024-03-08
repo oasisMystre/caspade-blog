@@ -15,7 +15,7 @@ const poppins = LocalFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase:  new URL(process.env.VERCEL_URL!),
+  metadataBase:  new URL('https://' + process.env.VERCEL_URL!),
   title: "Caspade - Where good ideas find you.",
   description:
     "Caspade is a crypto community where members share ideas, and where expert and undiscovered talents share their skills.",
