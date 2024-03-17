@@ -9,7 +9,7 @@ export default function StoryFilter() {
 
   return (
     searchParams && (
-      <div className="flex max-w-xs space-x-2 overflow-x-scroll md:max-w-auto md:space-x-4">
+      <div className="flex max-w-[88vw] space-x-2 overflow-x-scroll md:max-w-auto md:space-x-4">
         {feedFilterCategories.map((category, index) => {
           const value = searchParams.get("category");
           const selected =

@@ -22,10 +22,7 @@ storyblokInit({
 });
 
 export abstract class StoryblokApiImpl {
-  constructor(
-    protected api: StoryblokClient,
-    protected cache: Cache,
-  ) {}
+  constructor(protected api: StoryblokClient, protected cache: Cache) {}
 }
 
 export default class Storyblok extends StoryblokApiImpl {
@@ -48,12 +45,14 @@ export default class Storyblok extends StoryblokApiImpl {
     } = await this.api.getStory("feed-featured", {});
     const {
       data: {
+        
         story: { content },
       },
     } = await this.api.getStory(story.content.story, {
       find_by: "uuid",
     });
 
+    (story as any).story = story.content.story;
     story.content = content;
     story.content.user = await this.getUser(content.author);
 
@@ -65,7 +64,7 @@ export default class Storyblok extends StoryblokApiImpl {
       "cdn/stories",
       Object.assign(toNonNull(params), {
         content_type: "post",
-      }),
+      })
     )) as unknown as StoryData[];
 
     return Promise.all(
@@ -73,7 +72,7 @@ export default class Storyblok extends StoryblokApiImpl {
         story.content.user = await this.getUser(story.content.author);
 
         return story as StoryData;
-      }),
+      })
     );
   }
 

@@ -4,6 +4,7 @@ import { ISbStoryData } from "@storyblok/react";
 import StoryAction from "./StoryAction";
 import StoryHeader from "./StoryHeader";
 import { StoryContent } from "@/store/models/story.model";
+import Link from "next/link";
 
 type StoryFeatureProps = {
   story: ISbStoryData;
@@ -13,7 +14,10 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
   const content = story.content as StoryContent;
 
   return (
-    <section className="flex flex-col space-y-8 rounded-xl bg-stone-700/20 p-4 md:p-8 2xl:px-16">
+    <Link
+      href={`/blog/${(story as any).story}/`}
+      className="flex flex-col space-y-8 rounded-xl bg-stone-700/20 p-4 md:p-8 2xl:px-16"
+    >
       <StoryHeader
         createdAt={story.created_at}
         categories={story.tag_list}
@@ -49,6 +53,6 @@ export default function StoryFeature({ story }: StoryFeatureProps) {
           />
         </div>
       </div>
-    </section>
+    </Link>
   );
 }

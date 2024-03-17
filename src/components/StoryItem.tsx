@@ -1,12 +1,13 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
+import { ISbStoryData } from "@storyblok/react";
 
 import StoryHeader from "./StoryHeader";
-import StoryAction from "./StoryAction";
-import { ISbStoryData } from "@storyblok/react";
-import { StoryContent } from "@/store/models/story.model";
 import StoryUser from "./StoryUser";
+import StoryAction from "./StoryAction";
+
+import { StoryContent } from "@/store/models/story.model";
 
 type StoryItemProps = {
   story: ISbStoryData;
@@ -42,11 +43,11 @@ export default function StoryItem({
           )}
           <StoryAction />
         </div>
-        <div className="flex max-w-sm flex-col space-y-4 lt-md:pb-8">
+        <div className="flex flex-col space-y-4 lt-md:pb-8">
           {!hideDescription && <StoryUser user={content.user} />}
           <div className="flex flex-1 items-end">
             <Image
-              className={clsx("w-full rounded-md object-cover", [
+              className={clsx("lt-md:w-full rounded-md object-cover", [
                 hideDescription ? "w-sm h-64" : "h-sm lt-md:h-56",
               ])}
               src={content.illustration.filename}

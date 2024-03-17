@@ -20,7 +20,7 @@ export default function LayoutBackNavigation({
         Back
       </button>
       <MdChevronRight />
-      <span className="text-yellow-500">{title}</span>
+      <span className="text-yellow-500 first-letter:capitalize">{title}</span>
     </div>
   );
 }
