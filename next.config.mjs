@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {},
+  images: {
+    remotePatterns: [{ hostname: "a-us.storyblok.com" }],
+  },
 };
 
 export default nextConfig;
