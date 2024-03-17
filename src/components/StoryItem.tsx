@@ -42,12 +42,12 @@ export default function StoryItem({
           )}
           <StoryAction />
         </div>
-        <div className="flex max-w-sm flex-col space-y-4 lt-md:pb-8">
+        <div className="flex md:max-w-sm flex-col space-y-4 lt-md:pb-8">
           {!hideDescription && <StoryUser user={content.user} />}
-          <div className="flex flex-1 items-end">
+          <div className="flex flex-1 md:items-end">
             <Image
               className={clsx("w-full rounded-md object-cover", [
-                hideDescription ? "w-sm h-64" : "h-sm lt-md:h-56",
+                hideDescription ? "w-full md:w-sm h-64" : "h-sm lt-md:h-56",
               ])}
               src={content.illustration.filename}
               alt={content.illustration.alt}

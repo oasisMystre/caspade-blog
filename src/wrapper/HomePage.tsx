@@ -27,10 +27,12 @@ export default function HomePage({
 
   return (
     <div className="flex flex-1 flex-col space-y-48">
-      <div className="flex flex-1 flex-col space-y-16 self-center px-8 lg:px-24 2xl:max-w-7xl">
-        <StoryFeature story={featured} />
-        <div className="flex flex-col space-y-16">
-          <StoryFilter />
+      <div className="flex flex-1 flex-col space-y-16 self-center 2xl:max-w-7xl">
+        <div className="px-8 lg:px-24">
+          <StoryFeature story={featured} />
+        </div>
+        <StoryFilter />
+        <div className="flex flex-col space-y-16 px-8 lg:px-24">
           <div
             key={category}
             className="flex flex-col space-y-16"
