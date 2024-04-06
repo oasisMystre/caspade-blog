@@ -42,10 +42,11 @@ export default class Storyblok extends StoryblokApiImpl {
   async getFeatured() {
     const {
       data: { story },
-    } = await this.api.getStory("feed-featured", {});
+    } = await this.api.getStory("feed-featured", {
+      version: "published",
+    });
     const {
       data: {
-        
         story: { content },
       },
     } = await this.api.getStory(story.content.story, {

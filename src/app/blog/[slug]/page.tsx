@@ -13,11 +13,11 @@ import StoryRecommendation from "@/components/StoryRecommedation";
 
 export async function generateMetadata(
   { params }: PageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { content, ...story } = await Storyblok.instance.fetchPost(
     params.slug,
-    { find_by: "uuid" },
+    { find_by: "uuid", version: "published" }
   );
 
   return {
@@ -37,7 +37,7 @@ export async function generateMetadata(
 export default async function BlogDetailPage({ params }: PageProps) {
   const { content, ...story } = await Storyblok.instance.fetchPost(
     params.slug,
-    { find_by: "uuid" },
+    { find_by: "uuid" }
   );
 
   return (

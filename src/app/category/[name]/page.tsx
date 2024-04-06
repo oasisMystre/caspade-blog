@@ -8,6 +8,7 @@ import CategoryPage from "@/wrapper/CategoryPage";
 export default async function IndexPage({ params }: PageProps) {
   const stories = await Storyblok.instance.fetchPosts({
     with_tag: params.name,
+    version: "published"
   });
 
   return (
