@@ -15,7 +15,7 @@ export default function LayoutHeader() {
     <header className="sticky top-0 flex flex-col">
       <div className="flex items-center md:space-x-4 bg-stone-900/50 backdrop-blur-2xl px-8 py-2 md:px-16 2xl:w-7xl 2xl:self-center 2xl:px-0 z-10">
         <Link
-          href="/"
+          href="https://caspade.org"
           className="flex-1"
         >
           <Image
