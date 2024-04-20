@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+
 import { MdArrowUpward } from "react-icons/md";
 
 import { PageProps } from "@/wrapper/types";
@@ -7,9 +8,11 @@ import Storyblok from "@/lib/storybloc";
 import RichText from "@/components/RichText";
 import StoryUser from "@/components/StoryUser";
 import StoryHeader from "@/components/StoryHeader";
+import StoryReaction from "@/components/StoryReaction";
 import LayoutBackNavigation from "@/components/LayoutBackNavigation";
 import BlogSubscribeBanner from "@/components/BlogSubscribeBanner";
 import StoryRecommendation from "@/components/StoryRecommedation";
+import StoryShare from "@/components/StoryShare";
 
 export async function generateMetadata(
   { params }: PageProps,
@@ -56,19 +59,18 @@ export default async function BlogDetailPage({ params }: PageProps) {
           <div className="flex items-center">
             <b className="flex-1 font-medium">Share article</b>
             <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 text-yellow-500">
-                <span>Twitter</span>
-                <MdArrowUpward className="rotate-45 text-xl" />
-              </button>
-              <button className="flex items-center space-x-2 text-yellow-500">
-                <span>LinkedIn</span>
-                <MdArrowUpward className="rotate-45 text-xl" />
-              </button>
+              <StoryShare
+                title={content.title}
+                text={content.description}
+              />
             </div>
           </div>
-          <div className="flex flex-col space-y-32">
-            <div className="prose prose-white flex flex-col text-base xl:text-xl">
-              <RichText document={content.content} />
+          <div className="flex flex-col space-y-16">
+            <div className="flex flex-col space-y-8">
+              <div className="prose prose-white flex flex-col text-sm md:self-center xl:text-base">
+                <RichText document={content.content} />
+              </div>
+              <StoryReaction uuid={params.slug} />
             </div>
             <BlogSubscribeBanner />
           </div>

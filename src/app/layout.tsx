@@ -1,11 +1,15 @@
+import "react-toastify/dist/ReactToastify.css";
+
 import clsx from "clsx";
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
 
-import "./global.css";
+import { ToastContainer, toast } from "react-toastify";
 
+import "./global.css";
 import LayoutHeader from "@/components/LayoutHeader";
 import LayoutFooter from "@/components/LayoutFooter";
+import ProviderStack from "@/components/ProviderStack";
 
 const poppins = LocalFont({
   src: [
@@ -15,13 +19,13 @@ const poppins = LocalFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase:  new URL('https://blog.caspade.org'),
+  metadataBase: new URL("https://blog.caspade.org"),
   title: "Caspade - Where good ideas find you.",
   description:
     "Caspade is a crypto community where members share ideas, and where expert and undiscovered talents share their skills.",
-    openGraph: {
-      images: "/il_banner.png"
-    },
+  openGraph: {
+    images: "/il_banner.png",
+  },
 };
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
@@ -30,12 +34,15 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
       <body
         className={clsx(
           poppins.className,
-          "fixed inset-0 flex flex-col overflow-y-scroll",
+          "fixed inset-0 flex flex-col overflow-y-scroll"
         )}
       >
         <div className="flex flex-1 flex-col space-y-16 overflow-y-scroll">
           <LayoutHeader />
-          {children}
+          <ProviderStack>
+            {children}
+            <ToastContainer />
+          </ProviderStack>
           <LayoutFooter />
         </div>
       </body>
